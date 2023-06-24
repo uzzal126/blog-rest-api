@@ -12,7 +12,7 @@ const allUsersController = async (_req, res) => {
 const userByIdController = async (req, res) => {
     try {
         const userId = req.params.id
-        const data = await User.findById(userId).select({password:0, __v:0})
+        const data = await User.findById(userId).select({password:0, __v:0}).populate("posts")
         res.status(200).json(data)
     } catch (error) {
         res.status(204).json({message: error.message})

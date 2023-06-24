@@ -1,4 +1,4 @@
-const PageNotFoundHandler = (_req, res, next) => {
+const notFoundHandler = (_req, res, next) => {
     res.status(404).send("Page not found!")
     next()
 }
@@ -8,4 +8,4 @@ const errorHandler = (err, req, res, next) => {
     res.status(500).send('Something broke!')
 }
 
-module.exports = { PageNotFoundHandler, errorHandler }
+module.exports = { notFoundHandler, errorHandler }

@@ -14,7 +14,13 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: [true, "Password is required"]
-    }
+    },
+    posts: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: "Post"
+        }
+    ]
 })
 
 module.exports = mongoose.model("User", userSchema)
