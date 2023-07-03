@@ -1,9 +1,9 @@
 const router = require("express").Router()
 
-const { allUsersController, userByIdController } = require("../controllers/userController");
+const { allUsers, userById } = require("../controllers/userController");
 const authenticatedUser = require("../middleware/authMiddleware");
 
-router.get("/", allUsersController)
-router.get("/:id", authenticatedUser, userByIdController)
+router.get("/", allUsers)
+router.get("/:id", authenticatedUser, userById)
 
 module.exports = router;

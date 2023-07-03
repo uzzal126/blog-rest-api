@@ -1,10 +1,8 @@
-require("dotenv").config()
-
 const User = require("../model/userModel")
 const { hashedPasswordHandler, hashedPasswordCompare } = require("../utils/hashedPassword")
 const createJsonWebToken = require("../utils/jsonWebToken")
 
-const userRegisterController = async (req, res) => {
+const userRegister = async (req, res) => {
     try {
         const { name, email, password } = req.body
         const hashedPassword = await hashedPasswordHandler(password)
@@ -18,7 +16,7 @@ const userRegisterController = async (req, res) => {
     }
 }
 
-const userLoginController = async (req, res) => {
+const userLogin = async (req, res) => {
     try {
         const { email, password } = req.body
         const existingUser = await User.findOne({email})
@@ -40,4 +38,4 @@ const userLoginController = async (req, res) => {
     }
 }
 
-module.exports = { userRegisterController, userLoginController }
+module.exports = { userRegister, userLogin }

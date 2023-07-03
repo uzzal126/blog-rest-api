@@ -1,22 +1,22 @@
 const User = require("../model/userModel")
 
-const allUsersController = async (_req, res) => {
+const allUsers = async (_req, res) => {
     try {
-        const data = await User.find().select({password:0, __v:0})
+        const data = await User.find().select({password:0})
         res.status(200).json(data)
     } catch (error) {
         res.status(204).json({message: error.message})
     }
 }
 
-const userByIdController = async (req, res) => {
+const userById = async (req, res) => {
     try {
-        const userId = req.params.id
-        const data = await User.findById(userId).select({password:0, __v:0}).populate("posts")
+        const {id} = req.params
+        const data = await User.findById(id).select({password:0})
         res.status(200).json(data)
     } catch (error) {
         res.status(204).json({message: error.message})
     }
 }
 
-module.exports = { allUsersController, userByIdController }
+module.exports = { allUsers, userById }

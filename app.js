@@ -1,11 +1,12 @@
 const express = require("express")
 const { notFoundHandler, errorHandler } = require("./src/middleware/errorHandler")
 const connectDb = require("./src/config/db")
-const app = express()
 require("dotenv").config()
 const userRoutes = require("./src/routes/userRoutes")
 const authRoutes = require("./src/routes/authRoutes")
 const postRoutes = require("./src/routes/postRoutes")
+
+const app = express()
 
 // middleware
 app.use(express.json())

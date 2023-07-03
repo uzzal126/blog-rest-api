@@ -84,8 +84,7 @@ sw.*
 # Vim swap files
 *.swp
 
-yarn.lock
-package-lock.json
+
 *.zip
 *.psd
 .git
