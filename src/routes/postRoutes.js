@@ -5,9 +5,9 @@ const authenticated = require("../middleware/authMiddleware")
 
 
 router.get("/", getAllPosts)
+router.post("/", authenticated, addPost)
 router.get("/:id", getPostById)
 router.put("/:id", authenticated, updatePost)
 router.delete("/:id", authenticated, deletePost)
-router.post("/", authenticated, addPost)
 
 module.exports = router

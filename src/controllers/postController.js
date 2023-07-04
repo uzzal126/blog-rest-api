@@ -1,4 +1,5 @@
 const Post = require("../model/postModel")
+const cloudinary = require("../utils/cloudinary")
 
 // get all posts
 const getAllPosts = async (_req, res, _next) => {
@@ -15,7 +16,13 @@ const addPost = async (req, res, _next) => {
     try {
         const userId = req.user.id
         const { title, content } = req.body
-        const newPost = new Post({title, content, user:userId})
+        const image = req.files.image
+
+        const result = await cloudinary.uploader.upload(image.tempFilePath, {
+            folder: "posts"
+        })
+
+        const newPost = new Post({title, content, image: result.secure_url, user:userId})
         const post = await newPost.save()
         res.status(201).json(post)
     } catch (error) {

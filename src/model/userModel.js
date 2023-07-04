@@ -9,11 +9,20 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: [true, "Email is required"],
-        unique: [true, "Email is already registered"]
+        unique: true
     },
     password: {
         type: String,
         required: [true, "Password is required"]
+    },
+    address: {
+        type: String,
+    },
+    phone: {
+        type: String,
+    },
+    avatar: {
+        type: String,
     }
 }, {timestamps: true, versionKey: false})
 

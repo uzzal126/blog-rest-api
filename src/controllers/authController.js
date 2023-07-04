@@ -28,7 +28,7 @@ const userLogin = async (req, res) => {
         const user = await hashedPasswordCompare(password, existingUser.password)
 
         if(user) {
-            const token = await createJsonWebToken({id:existingUser._id}, process.env.JWT_SECRET_KEY, "1h")
+            const token = await createJsonWebToken({id:existingUser._id}, process.env.JWT_SECRET_KEY, "8h")
             res.status(200).json({message: "Login Successful", token: token})
         } else {
             res.status(400).json({message: "Password invalid, Use the correct password"})

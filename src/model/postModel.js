@@ -13,6 +13,9 @@ const postSchema = new Schema({
     user: {
         type: mongoose.Types.ObjectId,
         ref: "User"
+    },
+    image: {
+        type: String
     }
 }, {timestamps: true, versionKey: false})
 
